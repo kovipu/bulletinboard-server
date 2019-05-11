@@ -15,6 +15,7 @@ group "bulletinboard"
 repositories {
     mavenCentral()
     maven { url "https://jcenter.bintray.com" }
+    maven { url "https://dl.bintray.com/spekframework/spek-dev" }
 }
 
 dependencyManagement {
@@ -46,6 +47,9 @@ dependencies {
     testCompile "org.jetbrains.spek:spek-api:1.1.5"
     testRuntime "org.junit.jupiter:junit-jupiter-engine"
     testRuntime "org.jetbrains.spek:spek-junit-platform-engine:1.1.5"
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
+    testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spekVersion"
+    testRuntimeOnly "org.spekframework.spek2:spek-runner-junit5:$spekVersion"
 }
 
 test.classpath += configurations.developmentOnly
@@ -53,7 +57,9 @@ test.classpath += configurations.developmentOnly
 mainClassName = "bulletinboard.Application"
 // use JUnit 5 platform
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        includeEngines 'spek2'
+    }
 }
 
 shadowJar {
