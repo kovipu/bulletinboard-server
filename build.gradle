@@ -16,7 +16,6 @@ repositories {
     mavenCentral()
     maven { url "https://jcenter.bintray.com" }
     maven { url "https://dl.bintray.com/spekframework/spek-dev" }
-    jcenter()
 }
 
 dependencyManagement {
@@ -51,7 +50,6 @@ dependencies {
     testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
     testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spekVersion"
     testRuntimeOnly "org.spekframework.spek2:spek-runner-junit5:$spekVersion"
-    implementation 'com.beust:klaxon:5.0.1'
 }
 
 test.classpath += configurations.developmentOnly
